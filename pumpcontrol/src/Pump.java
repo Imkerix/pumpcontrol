@@ -41,4 +41,9 @@ public class Pump {
 		return datenleitung;
 	}
 	
+	public boolean notAus(){
+		//this.off();
+		return true;
+	}
+	
 }
