@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.logging.Logger;
 
 
 public class PumpControl {
@@ -8,7 +9,8 @@ public class PumpControl {
 	private Pump[] allpumps;
 	private IOPortAccess theWorldOutside = new IOPortAccess();
 	private byte sperrbyte;
-	
+	private static final Logger log = Logger.getLogger(Main.class.getName());
+
 	
 	PumpControl() {
 		allpumps = new Pump[8];
@@ -29,8 +31,8 @@ public class PumpControl {
 	public byte mksperrbyte(){
 		Arrays.sort(allpumps);
 		for(Pump p : allpumps){
-			System.out.println(p.getRuntime());
+			log.info("Runtime der Pumpe "+""+p.getRuntime());
 		}
-		return 0;
+		return (byte) 0b11111000;
 	}
 }

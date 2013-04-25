@@ -49,7 +49,7 @@ public class Pump implements Comparable<Pump>{
 
 	@Override
 	public int compareTo(Pump o) {
-		return (int) (this.runtimeInSec - o.runtimeInSec);
+		return Long.signum((this.runtimeInSec - o.runtimeInSec));
 	}
 	
 }

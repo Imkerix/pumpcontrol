@@ -11,7 +11,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		PumpControl MyPumpControl = new PumpControl();
-		log.setLevel(Level.INFO);
+		log.setLevel(Level.CONFIG);
 		System.setProperty("java.util.logging.config.file", "logging.properties");
 		
 		
