@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 
 public class PumpControl {
@@ -7,9 +9,15 @@ public class PumpControl {
 	private IOPortAccess theWorldOutside = new IOPortAccess();
 	private byte sperrbyte;
 	
+	
 	PumpControl() {
 		allpumps = new Pump[8];
-		this.mksperrbyte();
+		for(int i = 0; i<allpumps.length; i++){
+			allpumps[i]= new Pump(i);
+		}
+		
+		
+		mksperrbyte();
 	}
 	
 	public void Startpumping(){
@@ -19,10 +27,9 @@ public class PumpControl {
 	}
 	
 	public byte mksperrbyte(){
-		ArrayList<Pump> fifeLazyPumps = new ArrayList<Pump>();
-		
-		for(Pump p :allpumps){
-			
+		Arrays.sort(allpumps);
+		for(Pump p : allpumps){
+			System.out.println(p.getRuntime());
 		}
 		return 0;
 	}

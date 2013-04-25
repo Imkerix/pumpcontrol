@@ -1,8 +1,9 @@
 import java.util.logging.Logger;
 
 
-public class Pump {
-	private long runtimeInSec = 0;
+public class Pump implements Comparable<Pump>{
+
+	private long runtimeInSec = (long) Math.ceil((Math.random()*10));
 	private int datenleitung;
 	private long starttimenew = 0; //wird nur fuer abfrage auf 0 gesetzt
 	private long endtimenew;
@@ -44,6 +45,11 @@ public class Pump {
 	public boolean notAus(){
 		//this.off();
 		return true;
+	}
+
+	@Override
+	public int compareTo(Pump o) {
+		return (int) (this.runtimeInSec - o.runtimeInSec);
 	}
 	
 }
