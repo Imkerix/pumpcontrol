@@ -14,6 +14,8 @@ public class Main {
 		log.setLevel(Level.CONFIG);
 		System.setProperty("java.util.logging.config.file", "logging.properties");
 		
+		Pumpe p = new Pumpe("D0");
+		
 		
 	}
 
