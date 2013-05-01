@@ -13,7 +13,7 @@ public class PumpControl {
 	PumpControl() {
 		allpumps = new Pumpe[8];
 		for(int i = 0; i<allpumps.length; i++){
-			allpumps[i]= new Pumpe(i);
+			allpumps[i]= new Pumpe("D"+Integer.toString(i));
 		}
 		
 		
