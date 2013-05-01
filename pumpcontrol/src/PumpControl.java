@@ -13,7 +13,7 @@ public class PumpControl {
 	PumpControl() {
 		allpumps = new Pumpe[8];
 		for(int i = 0; i<allpumps.length; i++){
-			allpumps[i]= new Pumpe("D"+Integer.toString(i));
+			allpumps[i]= new Pumpe("D"+Integer.toString(i), theWorldOutside);
 		}
 		
 		
@@ -22,17 +22,17 @@ public class PumpControl {
 	public void Startpumping(int p_pumpe, char p_mode){
 			if(p_mode== '-' && p_pumpe == -1){
 				for(int i = 0; i<=allpumps.length; i++){		
-					theWorldOutside.writePort(i, sperrbyte >> i);
+					allpumps[i].changepowerstate(0);
 				}
 			}
 			else if(p_mode== '+' && p_pumpe == -1){
 				for(int i = 0; i<=allpumps.length; i++){		
-					theWorldOutside.writePort(i, sperrbyte >> i);
+					allpumps[i].changepowerstate(1);
 				}
 			}
 			else if(p_mode== '-' && p_pumpe != -1){
 				if(free[p_pumpe]==0){
-					theWorldOutside.writePort(p_pumpe, sperrbyte >> p_pumpe);
+					allpumps[p_pumpe].changepowerstate(0);
 				}
 				else{
 					log.info("Einzelne Gesperrte Pumpe aufgerufen! Bit zur zeit des Aufrufes "+free[p_pumpe]);
@@ -40,7 +40,7 @@ public class PumpControl {
 			}
 			else if(p_mode== '+' && p_pumpe != -1){
 				if(free[p_pumpe]==0){
-					theWorldOutside.writePort(p_pumpe, sperrbyte >> p_pumpe);
+					allpumps[p_pumpe].changepowerstate(1);
 				}
 				else{
 					log.info("Einzelne Gesperrte Pumpe aufgerufen! Bit zur zeit des Aufrufes "+free[p_pumpe]);
